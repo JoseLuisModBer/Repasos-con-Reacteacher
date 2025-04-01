@@ -1,8 +1,25 @@
+import { useState } from 'react';
+import './App.css';
+
 const App = () => {
-  const [mensaje, setMensaje] = React.useState('¡Hola, Reacteacher!');
+  const frases = [
+    '¡Hola Reacteacher!',
+    '¡Vamos allá!',
+    '¡Sigue así, crack!',
+    '¡A por el siguiente reto!',
+    '¡React es una pasada!',
+    '¡No pares de aprender!',
+  ];
+
+  const [mensaje, setMensaje] = useState(frases[0]);
 
   const cambiarMensaje = () => {
-    setMensaje('¡Vamos allá!');
+    const frasesSinRepetir = frases.filter((frase) => frase !== mensaje);
+
+    const nuevaFrase =
+      frasesSinRepetir[Math.floor(Math.random() * frasesSinRepetir.length)];
+
+    setMensaje(nuevaFrase);
   };
 
   return (
